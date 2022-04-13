@@ -233,6 +233,17 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.card__like-button {
+  width: 21px;
+  height: 19px;
+  align-self: center;
+  transition: ease 0.2s;
+  opacity: 1;
+}
+.card__like-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
 .footer {
   padding-top: 67px;
   padding-bottom: 60px;
