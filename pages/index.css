@@ -24,8 +24,113 @@
 .logo {
   padding-bottom: min(44px, 3.4vw);
 }
-.profile {
+.main {
   max-width: 880px;
+  margin: 0 auto;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: none;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.popup__box {
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  width: 430px;
+  border-radius: 10px;
+  position: fixed;
+}
+.popup__header {
+  display: flex;
+  justify-content: flex-end;
+}
+.popup__title {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.203;
+  margin-top: 34px;
+  margin-bottom: 50px;
+  color: #000000;
+  max-width: 76.7%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.popup__close-btn {
+  width: 40px;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  transition: ease 0.2s;
+  opacity: 1;
+}
+.popup__close-btn:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.form {
+  display: block;
+}
+.form__fieldset {
+  border: 0;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-width: 0;
+  max-width: 76.7%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form__input {
+  width: 100%;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: content-box;
+  padding-bottom: 13px;
+  margin-bottom: 34px;
+}
+.form__input::placeholder {
+  color: #838383;
+}
+.form__button {
+  margin-top: calc(48px - 34px);
+  width: 100%;
+  height: 50.15px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background-color: #000;
+  color: #fff;
+  transition: ease 0.2s;
+  opacity: 1;
+}
+.form__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.profile {
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -63,13 +168,25 @@
   line-height: 22px;
   min-width: 100%;
 }
-.edit-button {
+.profile-info__edit-button {
   max-width: 24px;
   max-height: 24px;
   align-self: center;
+  transition: ease 0.2s;
+  opacity: 1;
 }
-.add-button {
+.profile-info__edit-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.profile-info__add-button {
   margin-left: auto;
+  transition: ease 0.2s;
+  opacity: 1;
+}
+.profile-info__add-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 .elements {
   max-width: 880px;
