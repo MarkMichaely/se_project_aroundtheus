@@ -1,0 +1,110 @@
+.profile-info {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 415px;
+  column-gap: 18px;
+  row-gap: 18px;
+  max-height: 77px;
+  align-self: center;
+}
+.profile-info__wrapper {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+}
+.profile-info__name {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+  max-height: 39px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 373px;
+}
+.profile-info__description {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  min-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.profile-info__edit-button {
+  max-width: 24px;
+  max-height: 24px;
+  align-self: flex-end;
+  transition: ease 0.2s;
+  opacity: 1;
+}
+.profile-info__edit-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.profile-info__add-rectangle {
+  margin-left: auto;
+  transition: ease 0.2s;
+  opacity: 1;
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+.profile-info__add-rectangle:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.profile-info__add-button {
+  width: 18px;
+  height: 18px;
+}
+@media screen and (max-width: 760px) {
+  .profile-info {
+    max-width: 100%;
+    column-gap: 14px;
+    row-gap: 10px;
+    align-items: center;
+  }
+  .profile-info__wrapper {
+    gap: 10px;
+    justify-content: center;
+  }
+  .profile-info__name {
+    font-size: 22px;
+    line-height: 1.227;
+    text-align: center;
+  }
+  .profile-info__description {
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+  }
+  .profile-info__edit-button {
+    max-width: 18px;
+    max-height: 18px;
+    align-self: center;
+  }
+  .profile-info__add-rectangle {
+    margin: 36 0 0 0;
+    width: 282px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  .profile-info__add-button {
+    width: 16px;
+    height: 16px;
+  }
+}
