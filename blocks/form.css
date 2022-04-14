@@ -1,5 +1,7 @@
 .form {
   display: block;
+  margin: 0;
+  padding-bottom: 36.51px;
 }
 .form__fieldset {
   border: 0;
@@ -49,4 +51,17 @@
 .form__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+@media screen and (max-width: 597px) {
+  .form {
+    padding-bottom: 25px;
+  }
+  .form__fieldset {
+    max-width: 84.4%;
+  }
+  .form__button {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
