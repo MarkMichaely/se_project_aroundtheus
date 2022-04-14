@@ -2,15 +2,19 @@
 
 ### Overview
 
-* Figma
-* Images
+- Description
+- Technologies
+- GitHub Pages
 
-**Figma**
+**Description**
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+This is a project the shows the students ability to create responsive sites using CSS and HTML, as well as simple scripts by using JavaScript. By using developer tools one can see how the site changes using different screen sizes. By clicking on the edit button a form will appear that will allow to change the name and job description on site. other buttons are not yet implemnted if even styled to show the ability.
 
-**Images**
+**Technologies**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+In this project I used HTML for the site code iteslf, CSS for styling and JavaScript for scripts.
+The design was taken from a .Fig file that Opend with Figma, a desinging tool for websites.
 
-Have fun with JavaScript!
+**GitHub Pages**
+
+https://markmichaely.github.io/web_project_4/
