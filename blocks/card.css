@@ -44,3 +44,11 @@
   cursor: pointer;
   opacity: 0.5;
 }
+.card__like-button-filled {
+  position: relative;
+  z-index: 5;
+  content: "";
+  background-image: url("../images/like_icon_filled.svg");
+  height: 19px;
+  width: 21px;
+}
