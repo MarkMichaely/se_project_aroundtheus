@@ -1,8 +1,6 @@
 .card {
   background-color: #fff;
   border-radius: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
   max-width: 282px;
 }
