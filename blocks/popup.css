@@ -37,8 +37,9 @@
   margin: 0;
 }
 .popup__close-btn {
-  width: 40px;
-  height: 40px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
   position: relative;
   top: -74px;
   right: -88px;
@@ -48,6 +49,10 @@
 .popup__close-btn:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+.popup__close-sign {
+  width: 40px;
+  height: 40px;
 }
 @media screen and (max-width: 597px) {
   .popup__box {
@@ -63,8 +68,10 @@
     line-height: 22px;
   }
   .popup__close-btn {
-    width: 28px;
-    height: 28px;
     right: -15px;
+  }
+  .popup__close-sign {
+    height: 28px;
+    width: 28px;
   }
 }

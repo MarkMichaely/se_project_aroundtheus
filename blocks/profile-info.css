@@ -25,6 +25,7 @@
   text-overflow: ellipsis;
   max-width: 373px;
 }
+
 .profile-info__description {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
@@ -37,19 +38,30 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.profile-info__edit-button {
+.profile-info__btn {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: black;
   max-width: 24px;
   max-height: 24px;
   align-self: flex-end;
   transition: ease 0.2s;
   opacity: 1;
 }
-.profile-info__edit-button:hover {
+.profile-info__btn:hover {
   opacity: 0.6;
   cursor: pointer;
 }
-.profile-info__add-rectangle {
-  margin-left: auto;
+.profile-info__edit-button {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.profile-info__add-btn {
+  margin: 0 0 0 auto;
+  padding: 0;
+  background-color: #000;
   transition: ease 0.2s;
   opacity: 1;
   width: 150px;
@@ -62,11 +74,11 @@
   justify-content: center;
   align-self: center;
 }
-.profile-info__add-rectangle:hover {
+.profile-info__add-btn:hover {
   opacity: 0.6;
   cursor: pointer;
 }
-.profile-info__add-button {
+.profile-info__add-sign {
   width: 18px;
   height: 18px;
 }
@@ -91,19 +103,21 @@
     line-height: 1.21;
     text-align: center;
   }
+  .profile-info__btn {
+    align-self: center;
+  }
   .profile-info__edit-button {
     max-width: 18px;
     max-height: 18px;
-    align-self: center;
   }
-  .profile-info__add-rectangle {
+  .profile-info__add-btn {
     margin: 36 0 0 0;
     width: 282px;
     align-items: center;
     justify-content: center;
     align-self: center;
   }
-  .profile-info__add-button {
+  .profile-info__add-sign {
     width: 16px;
     height: 16px;
   }

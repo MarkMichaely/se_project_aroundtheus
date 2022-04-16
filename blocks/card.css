@@ -33,22 +33,26 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.card__like-button {
-  width: 21px;
-  height: 19px;
+.card__like-btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
   align-self: center;
   transition: ease 0.2s;
   opacity: 1;
 }
-.card__like-button:hover {
+.card__like-btn:hover {
   cursor: pointer;
   opacity: 0.5;
 }
-.card__like-button-filled {
+.card__like-btn-filled {
   position: relative;
   z-index: 5;
-  content: "";
   background-image: url("../images/like_icon_filled.svg");
   height: 19px;
   width: 21px;
+}
+.card__like-icon {
+  width: 21px;
+  height: 19px;
 }

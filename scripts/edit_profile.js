@@ -1,4 +1,5 @@
 let popup = document.querySelector(".popup");
+let formElement = document.querySelector(".form");
 let editBtn = document.querySelector(".profile-info__edit-button");
 let closeBtn = document.querySelector(".popup__close-btn");
 let nameInput = document.querySelector(".form__input_type_name");
@@ -13,8 +14,6 @@ function openPopup() {
 function closePopup() {
   popup.classList.remove("popup_opened");
 }
-
-let formElement = document.querySelector(".form");
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();

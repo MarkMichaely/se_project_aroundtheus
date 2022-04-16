@@ -27,40 +27,49 @@
             class="profile__avatar"
           />
           <div class="profile-info">
-            <span class="profile-info__wrapper">
+            <div class="profile-info__wrapper">
               <h1 class="profile-info__name">Jacques Cousteau</h1>
-              <img
-                class="profile-info__edit-button"
-                src="./images/Edit Button.svg"
-                alt="edit-button"
-              />
-            </span>
+              <button
+                type="button"
+                class="profile-info__btn"
+                aria-label="edit button"
+              >
+                <img
+                  class="profile-info__edit-button"
+                  src="./images/Edit Button.svg"
+                  alt="edit-button"
+                />
+              </button>
+            </div>
             <p class="profile-info__description">Explorer</p>
           </div>
-          <span class="profile-info__add-rectangle">
+          <button class="profile-info__add-btn" aria-label="add button">
             <img
-              class="profile-info__add-button"
+              class="profile-info__add-sign"
               src="./images/add_Vector.svg"
               alt="add-button"
             />
-          </span>
+          </button>
         </section>
         <section class="popup">
           <div class="popup__box">
-            <span class="popup__header">
-              <h1 class="popup__title">Edit profile</h1>
-              <img
-                src="./images/Close Icon.svg"
-                alt="close button"
-                class="popup__close-btn"
-              />
-            </span>
+            <div class="popup__header">
+              <h2 class="popup__title">Edit profile</h2>
+              <button class="popup__close-btn">
+                <img
+                  src="./images/Close Icon.svg"
+                  alt="close button"
+                  class="popup__close-sign"
+                />
+              </button>
+            </div>
 
-            <form class="form">
+            <form class="form" name="edit-form">
               <fieldset class="form__fieldset">
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   class="form__input form__input_type_name"
                   placeholder="Name Surname"
                   required
@@ -68,6 +77,7 @@
                 <input
                   type="text"
                   id="description"
+                  name="description"
                   class="form__input form__input_type_description"
                   placeholder="description"
                   required
@@ -82,14 +92,16 @@
         <section class="elements">
           <article class="card">
             <img src="./images/Bald Mt.png" alt="bald mt" class="card__image" />
-            <span class="card__title-wrapper">
-              <h1 class="card__title">Bald Mountains</h1>
-              <img
-                src="./images/like_icon.svg"
-                alt="like-button"
-                class="card__like-button"
-              />
-            </span>
+            <div class="card__title-wrapper">
+              <h2 class="card__title">Bald Mountains</h2>
+              <button class="card__like-btn">
+                <img
+                  src="./images/like_icon.svg"
+                  alt="like-button"
+                  class="card__like-icon"
+                />
+              </button>
+            </div>
           </article>
           <article class="card">
             <img
@@ -97,14 +109,16 @@
               alt="lago di Braies"
               class="card__image"
             />
-            <span class="card__title-wrapper">
-              <h1 class="card__title">Lago Di Braies</h1>
-              <img
-                src="./images/like_icon.svg"
-                alt="like-button"
-                class="card__like-button"
-              />
-            </span>
+            <div class="card__title-wrapper">
+              <h2 class="card__title">Lago Di Braies</h2>
+              <button class="card__like-btn">
+                <img
+                  src="./images/like_icon.svg"
+                  alt="like-button"
+                  class="card__like-icon"
+                />
+              </button>
+            </div>
           </article>
           <article class="card">
             <img
@@ -112,36 +126,42 @@
               alt="lake Louise"
               class="card__image"
             />
-            <span class="card__title-wrapper">
-              <h1 class="card__title">Lake Louise</h1>
-              <img
-                src="./images/like_icon.svg"
-                alt="like-button"
-                class="card__like-button"
-              />
-            </span>
+            <div class="card__title-wrapper">
+              <h2 class="card__title">Lake Louise</h2>
+              <button class="card__like-btn">
+                <img
+                  src="./images/like_icon.svg"
+                  alt="like-button"
+                  class="card__like-icon"
+                />
+              </button>
+            </div>
           </article>
           <article class="card">
             <img src="./images/Latemar.png" alt="latemar" class="card__image" />
-            <span class="card__title-wrapper">
-              <h1 class="card__title">Latemar</h1>
-              <img
-                src="./images/like_icon.svg"
-                alt="like-button"
-                class="card__like-button"
-              />
-            </span>
+            <div class="card__title-wrapper">
+              <h2 class="card__title">Latemar</h2>
+              <button class="card__like-btn">
+                <img
+                  src="./images/like_icon.svg"
+                  alt="like-button"
+                  class="card__like-icon"
+                />
+              </button>
+            </div>
           </article>
           <article class="card">
             <img src="./images/Vanoise.png" alt="Vanoise" class="card__image" />
-            <span class="card__title-wrapper">
-              <h1 class="card__title">Vanoise National Park</h1>
-              <img
-                src="./images/like_icon.svg"
-                alt="like-button"
-                class="card__like-button"
-              />
-            </span>
+            <div class="card__title-wrapper">
+              <h2 class="card__title">Vanoise National Park</h2>
+              <button class="card__like-btn">
+                <img
+                  src="./images/like_icon.svg"
+                  alt="like-button"
+                  class="card__like-icon"
+                />
+              </button>
+            </div>
           </article>
           <article class="card">
             <img
@@ -149,14 +169,16 @@
               alt="Yosemite Vally"
               class="card__image"
             />
-            <span class="card__title-wrapper">
-              <h1 class="card__title">Yosemite Valley</h1>
-              <img
-                src="./images/like_icon.svg"
-                alt="like-button"
-                class="card__like-button"
-              />
-            </span>
+            <div class="card__title-wrapper">
+              <h2 class="card__title">Yosemite Valley</h2>
+              <button class="card__like-btn">
+                <img
+                  src="./images/like_icon.svg"
+                  alt="like-button"
+                  class="card__like-icon"
+                />
+              </button>
+            </div>
           </article>
         </section>
       </main>
@@ -165,6 +187,5 @@
       </footer>
     </div>
     <script src="./scripts/edit_profile.js"></script>
-    <script src="./scripts/like_fill.js"></script>
   </body>
 </html>
