@@ -30,6 +30,9 @@ const initialCards = [
   const elemnts =document.querySelector(".elements");
   const cardTemplate =document.querySelector("#card-template").content;
   const closeCardBtn = document.querySelector(".popup__close-btn_type_card");
+  const cardFormPlace =document.querySelector(".form__input_type_place");
+  const cardFormLink =document.querySelector(".form__input_type_link");
+
 
   function addCard(cardName,cardImg){
       const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
@@ -46,15 +49,22 @@ function initCards(){
     }
 }
 function openCardPopup(){
+  cardFormLink.value="";
+  cardFormPlace.value="";
+
   cardPopup.classList.add("popup_opened");  
 }
 function closeCardPopup(){
   cardPopup.classList.remove("popup_opened");  
 
 }
-function handleCardSubmit(){
+function handleCardSubmit(evt){
+  evt.preventDefault();
+  addCard(cardFormPlace.value,cardFormLink.value);
+  closeCardPopup();
 
 }
 addBtn.addEventListener("click",openCardPopup);
 closeCardBtn.addEventListener("click", closeCardPopup);
+cardForm.addEventListener("submit", handleCardSubmit);
 initCards();
