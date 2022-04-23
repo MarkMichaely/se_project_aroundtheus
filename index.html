@@ -1,197 +1,80 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="This is a website of a fictional profile page."
-    />
-    <meta
-      name="keywords"
-      content="HTML, CSS, Practicum, Profile, Around The U.S."
-    />
-    <meta name="author" content="Mark Michaely" />
-    <title>Around The U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-  </head>
-  <body class="body">
-    <div class="page">
-      <header class="header">
-        <img src="./images/header_logo.svg" alt="around the us" class="logo" />
-      </header>
-      <main class="main">
-        <section class="profile">
-          <img
-            src="./images/profile.png"
-            alt="avatar"
-            class="profile__avatar"
-          />
-          <div class="profile-info">
-            <div class="profile-info__wrapper">
-              <h1 class="profile-info__name">Jacques Cousteau</h1>
-              <button
-                type="button"
-                class="profile-info__btn"
-                aria-label="edit button"
-              >
-                <img
-                  class="profile-info__edit-button"
-                  src="./images/Edit_Button.svg"
-                  alt="edit-button"
-                />
-              </button>
-            </div>
-            <p class="profile-info__description">Explorer</p>
-          </div>
-          <button
-            class="profile-info__add-btn"
-            aria-label="add button"
-            type="button"
-          >
-            <img
-              class="profile-info__add-sign"
-              src="./images/add_Vector.svg"
-              alt="add-button"
-            />
-          </button>
-        </section>
-        <section class="popup">
-          <div class="popup__box">
-            <div class="popup__header">
-              <h2 class="popup__title">Edit profile</h2>
-              <button class="popup__close-btn" type="button">
-                <img
-                  src="./images/Close_Icon.svg"
-                  alt="close button"
-                  class="popup__close-sign"
-                />
-              </button>
-            </div>
 
-            <form class="form" name="edit-form">
-              <fieldset class="form__fieldset">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="form__input form__input_type_name"
-                  placeholder="Name Surname"
-                  required
-                />
-                <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  class="form__input form__input_type_description"
-                  placeholder="description"
-                  required
-                />
-              </fieldset>
-              <fieldset class="form__fieldset">
-                <button class="form__button" type="submit">Save</button>
-              </fieldset>
-            </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="This is a website of a fictional profile page." />
+  <meta name="keywords" content="HTML, CSS, Practicum, Profile, Around The U.S." />
+  <meta name="author" content="Mark Michaely" />
+  <title>Around The U.S.</title>
+  <link rel="stylesheet" href="./pages/index.css" />
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="./images/header_logo.svg" alt="around the us" class="logo" />
+    </header>
+    <main class="main">
+      <section class="profile">
+        <img src="./images/profile.png" alt="avatar" class="profile__avatar" />
+        <div class="profile-info">
+          <div class="profile-info__wrapper">
+            <h1 class="profile-info__name">Jacques Cousteau</h1>
+            <button type="button" class="profile-info__btn" aria-label="edit button">
+              <img class="profile-info__edit-button" src="./images/Edit_Button.svg" alt="edit-button" />
+            </button>
           </div>
-        </section>
-        <section class="elements">
-          <article class="card">
-            <img src="./images/Bald_Mt.png" alt="bald mt" class="card__image" />
-            <div class="card__title-wrapper">
-              <h2 class="card__title">Bald Mountains</h2>
-              <button class="card__like-btn" type="button">
-                <img
-                  src="./images/like_icon.svg"
-                  alt="like-button"
-                  class="card__like-icon"
-                />
-              </button>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="./images/Lago_di_Braies.png"
-              alt="lago di Braies"
-              class="card__image"
-            />
-            <div class="card__title-wrapper">
-              <h2 class="card__title">Lago Di Braies</h2>
-              <button class="card__like-btn" type="button">
-                <img
-                  src="./images/like_icon.svg"
-                  alt="like-button"
-                  class="card__like-icon"
-                />
-              </button>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="./images/Lake_Louise.png"
-              alt="lake Louise"
-              class="card__image"
-            />
-            <div class="card__title-wrapper">
-              <h2 class="card__title">Lake Louise</h2>
-              <button class="card__like-btn" type="button">
-                <img
-                  src="./images/like_icon.svg"
-                  alt="like-button"
-                  class="card__like-icon"
-                />
-              </button>
-            </div>
-          </article>
-          <article class="card">
-            <img src="./images/Latemar.png" alt="latemar" class="card__image" />
-            <div class="card__title-wrapper">
-              <h2 class="card__title">Latemar</h2>
-              <button class="card__like-btn" type="button">
-                <img
-                  src="./images/like_icon.svg"
-                  alt="like-button"
-                  class="card__like-icon"
-                />
-              </button>
-            </div>
-          </article>
-          <article class="card">
-            <img src="./images/Vanoise.png" alt="Vanoise" class="card__image" />
-            <div class="card__title-wrapper">
-              <h2 class="card__title">Vanoise National Park</h2>
-              <button class="card__like-btn" type="button">
-                <img
-                  src="./images/like_icon.svg"
-                  alt="like-button"
-                  class="card__like-icon"
-                />
-              </button>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="./images/Yosemite_Vally.jpg"
-              alt="Yosemite Vally"
-              class="card__image"
-            />
-            <div class="card__title-wrapper">
-              <h2 class="card__title">Yosemite Valley</h2>
-              <button class="card__like-btn" type="button">
-                <img
-                  src="./images/like_icon.svg"
-                  alt="like-button"
-                  class="card__like-icon"
-                />
-              </button>
-            </div>
-          </article>
-        </section>
-      </main>
-      <footer class="footer">
-        <p class="footer__copyright">© 2022 Mark Michaely</p>
-      </footer>
-    </div>
-    <script src="./scripts/edit_profile.js"></script>
-  </body>
+          <p class="profile-info__description">Explorer</p>
+        </div>
+        <button class="profile-info__add-btn" aria-label="add button" type="button">
+          <img class="profile-info__add-sign" src="./images/add_Vector.svg" alt="add-button" />
+        </button>
+      </section>
+      <section class="popup">
+        <div class="popup__box">
+          <div class="popup__header">
+            <h2 class="popup__title">Edit profile</h2>
+            <button class="popup__close-btn" type="button">
+              <img src="./images/Close_Icon.svg" alt="close button" class="popup__close-sign" />
+            </button>
+          </div>
+
+          <form class="form" name="edit-form">
+            <fieldset class="form__fieldset">
+              <input type="text" id="name" name="name" class="form__input form__input_type_name"
+                placeholder="Name Surname" required />
+              <input type="text" id="description" name="description" class="form__input form__input_type_description"
+                placeholder="description" required />
+            </fieldset>
+            <fieldset class="form__fieldset">
+              <button class="form__button" type="submit">Save</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+      <section class="elements">
+
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2022 Mark Michaely</p>
+    </footer>
+  </div>
+  <template id="card-template">
+    <article class="card">
+      <img alt="Card Image" class="card__image" />
+      <div class="card__title-wrapper">
+        <h2 class="card__title"></h2>
+        <button class="card__like-btn" type="button">
+        </button>
+      </div>
+    </article>
+  </template>
+  <script src="./scripts/init_cards.js"></script>
+  <script src="./scripts/edit_profile.js"></script>
+</body>
+
 </html>

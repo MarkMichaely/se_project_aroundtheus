@@ -7,8 +7,8 @@
 
 .card__image {
   margin-bottom: 25px;
-  max-width: 282px;
-  max-height: 282px;
+  width: 282px;
+  height: 282px;
 }
 .card__title-wrapper {
   display: flex;
@@ -34,23 +34,26 @@
 .card__like-btn {
   padding: 0;
   border: none;
+  background-image: url("../images/like_icon.svg");
   background-color: transparent;
   align-self: center;
   transition: ease 0.2s;
   opacity: 1;
+  width: 21px;
+  height: 19px;
 }
 .card__like-btn:hover {
   cursor: pointer;
   opacity: 0.5;
 }
 .card__like-btn-filled {
-  position: relative;
-  z-index: 5;
+  /* position: relative;
+  z-index: 5; */
   background-image: url("../images/like_icon_filled.svg");
-  height: 19px;
-  width: 21px;
+  /* height: 19px;
+  width: 21px; */
 }
-.card__like-icon {
+/* .card__like-icon {
   width: 21px;
   height: 19px;
-}
+} */
