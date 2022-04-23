@@ -24,10 +24,12 @@ const initialCards = [
       link: "https://code.s3.yandex.net/web-code/lago.jpg"
     }
   ];
-
-  
+  const cardPopup=document.querySelector(".card-popup");
+  const cardForm=document.querySelector(".card-form");
+  const addBtn=document.querySelector(".profile-info__add-btn");
   const elemnts =document.querySelector(".elements");
   const cardTemplate =document.querySelector("#card-template").content;
+  const closeCardBtn = document.querySelector(".popup__close-btn_type_card");
 
   function addCard(cardName,cardImg){
       const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
@@ -42,7 +44,17 @@ function initCards(){
         addCard(initialCards[index].name,initialCards[index].link)
         
     }
+}
+function openCardPopup(){
+  cardPopup.classList.add("popup_opened");  
+}
+function closeCardPopup(){
+  cardPopup.classList.remove("popup_opened");  
 
 }
+function handleCardSubmit(){
 
+}
+addBtn.addEventListener("click",openCardPopup);
+closeCardBtn.addEventListener("click", closeCardPopup);
 initCards();
