@@ -47,13 +47,6 @@
   opacity: 0.5;
 }
 .card__like-btn-filled {
-  /* position: relative;
-  z-index: 5; */
   background-image: url("../images/like_icon_filled.svg");
-  /* height: 19px;
-  width: 21px; */
+  
 }
-/* .card__like-icon {
-  width: 21px;
-  height: 19px;
-} */

@@ -39,6 +39,9 @@ const initialCards = [
       
     cardElement.querySelector(".card__title").textContent = cardName;
     cardElement.querySelector(".card__image").src = cardImg;
+    cardElement.querySelector(".card__like-btn").addEventListener("click", function(evt){
+      evt.target.classList.toggle("card__like-btn-filled");
+    })
 elemnts.prepend(cardElement);  
 }
 
