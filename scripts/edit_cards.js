@@ -32,6 +32,7 @@ const initialCards = [
   const closeCardBtn = document.querySelector(".popup__close-btn_type_card");
   const cardFormPlace =document.querySelector(".form__input_type_place");
   const cardFormLink =document.querySelector(".form__input_type_link");
+  const removeBtn=document.querySelector(".card__delete-btn")
 
 
   function addCard(cardName,cardImg){
@@ -41,6 +42,9 @@ const initialCards = [
     cardElement.querySelector(".card__image").src = cardImg;
     cardElement.querySelector(".card__like-btn").addEventListener("click", function(evt){
       evt.target.classList.toggle("card__like-btn-filled");
+    })
+    cardElement.querySelector(".card__delete-btn").addEventListener("click", function(evt){
+      evt.target.parentNode.remove();
     })
 elemnts.prepend(cardElement);  
 }

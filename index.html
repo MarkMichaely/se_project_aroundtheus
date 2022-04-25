@@ -68,8 +68,8 @@
             <fieldset class="form__fieldset">
               <input type="text" id="place" name="place" class="form__input form__input_type_place" placeholder="Title"
                 required />
-              <input type="text" id="link" name="link" class="form__input form__input_type_link"
-                placeholder="Image link" required />
+              <input type="url" id="link" name="link" class="form__input form__input_type_link" placeholder="Image link"
+                required />
             </fieldset>
             <fieldset class="form__fieldset">
               <button class="form__button" type="submit">Create</button>
@@ -88,6 +88,7 @@
   <template id="card-template">
     <article class="card">
       <img alt="Card Image" class="card__image" />
+      <button class="card__delete-btn" type="button"></button>
       <div class="card__title-wrapper">
         <h2 class="card__title"></h2>
         <button class="card__like-btn" type="button">

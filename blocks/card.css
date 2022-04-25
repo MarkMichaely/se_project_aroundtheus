@@ -3,6 +3,7 @@
   border-radius: 10px;
   overflow: hidden;
   max-width: 282px;
+  position: relative;
 }
 
 .card__image {
@@ -49,4 +50,21 @@
 .card__like-btn-filled {
   background-image: url("../images/like_icon_filled.svg");
   
+}
+.card__delete-btn{
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-image: url("../images/delete_button.svg");
+  transition: ease 0.2s;
+  opacity: 1;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top:18px;
+  right: 15px;
+}
+.card__delete-btn:hover{
+  cursor: pointer;
+  opacity: 0.5;
 }
