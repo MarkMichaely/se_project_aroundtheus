@@ -55,7 +55,7 @@
   height: 40px;
 }
 .popup_type_image-wrapper{
-  width: calc(75vw + 40px);
+  max-width: calc(75vw + 40px);
   display: flex;
   flex-direction: column;
 }
@@ -80,7 +80,7 @@
   position: relative;
   transition: ease 0.2s;
   opacity: 1;
-  align-self: flex-end;
+  margin-left: 100%;
   
 }
 .popup__close-btn_type_image:hover {
@@ -111,5 +111,9 @@
   .popup__close-sign {
     height: 28px;
     width: 28px;
+  }
+  .popup__close-sign_type_image {
+    width: 30px;
+    height: 30px;
   }
 }
