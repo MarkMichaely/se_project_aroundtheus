@@ -47,7 +47,7 @@ function handleImageClick(card) {
 }
 
 function addCard(card) {
-  let cardElement = renderCard(card);
+  const cardElement = renderCard(card);
   createCard(cardElement);
 }
 function renderCard(card) {
