@@ -27,7 +27,7 @@ const initialCards = [
   const cardPopup=document.querySelector(".popup_type_card");
   const cardForm=document.querySelector(".form_type_card");
   
-  const addBtn=document.querySelector(".profile-info__add-btn");
+  const addBtn=document.querySelector(".profile__add-btn");
   const elemnts =document.querySelector(".elements");
   const cardTemplate =document.querySelector("#card-template").content;
   const closeCardBtn = document.querySelector(".popup__close-btn_type_card");

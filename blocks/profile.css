@@ -11,6 +11,30 @@
   max-height: 130px;
   background-color: #000;
 }
+.profile__add-btn {
+  margin: 0 0 0 auto;
+  padding: 0;
+  background-color: #000;
+  transition: ease 0.2s;
+  opacity: 1;
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+.profile__add-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.profile__add-sign {
+  width: 18px;
+  height: 18px;
+}
 @media screen and (max-width: 760px) {
   .profile {
     max-width: max(282px, 88.1vw);
@@ -22,4 +46,16 @@
     margin-bottom: 30px;
     margin-right: 0;
   }
+  .profile__add-btn {
+    margin: 36px 0 0 0;
+    width: 282px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  .profile__add-sign {
+    width: 16px;
+    height: 16px;
+  }
 }
+
