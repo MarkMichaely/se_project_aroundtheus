@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .popup__box {
   background: #ffffff;
@@ -53,6 +54,44 @@
   width: 40px;
   height: 40px;
 }
+.popup_type_image-wrapper{
+  width: calc(75vw + 40px);
+  display: flex;
+  flex-direction: column;
+}
+.popup__card-image{
+  max-width: 75vw;
+  max-height: 75vh;
+
+}
+.popup__card-title{
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  margin : 10px 0 0 0;
+  color: #FFFFFF;
+}
+.popup__close-btn_type_image{
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  position: relative;
+  transition: ease 0.2s;
+  opacity: 1;
+  align-self: flex-end;
+  
+}
+.popup__close-btn_type_image:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.popup__close-sign_type_image {
+  width: 40px;
+  height: 40px;
+}
+
 @media screen and (max-width: 597px) {
   .popup__box {
     width: 282px;

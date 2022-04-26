@@ -33,50 +33,61 @@
           <img class="profile-info__add-sign" src="./images/add_Vector.svg" alt="add-button" />
         </button>
       </section>
-      <section class="popup edit-popup">
-        <div class="popup__box">
-          <div class="popup__header">
-            <h2 class="popup__title">Edit profile</h2>
-            <button class="popup__close-btn popup__close-btn_type_edit" type="button">
-              <img src="./images/Close_Icon.svg" alt="close button" class="popup__close-sign" />
-            </button>
+      <section class="popups">
+        <div class="popup popup_type_edit">
+          <div class="popup__box">
+            <div class="popup__header">
+              <h2 class="popup__title">Edit profile</h2>
+              <button class="popup__close-btn popup__close-btn_type_edit" type="button">
+                <img src="./images/Close_Icon.svg" alt="close button" class="popup__close-sign" />
+              </button>
+            </div>
+            <form class="form form_type_edit" name="edit-form">
+              <fieldset class="form__fieldset">
+                <input type="text" id="name" name="name" class="form__input form__input_type_name"
+                  placeholder="Name Surname" required />
+                <input type="text" id="description" name="description" class="form__input form__input_type_description"
+                  placeholder="description" required />
+              </fieldset>
+              <fieldset class="form__fieldset">
+                <button class="form__button" type="submit">Save</button>
+              </fieldset>
+            </form>
           </div>
+        </div>
+        <div class="popup popup_type_card">
+          <div class="popup__box">
+            <div class="popup__header">
+              <h2 class="popup__title">New Place</h2>
+              <button class="popup__close-btn popup__close-btn_type_card" type="button">
+                <img src="./images/Close_Icon.svg" alt="close button" class="popup__close-sign" />
+              </button>
+            </div>
 
-          <form class="form edit-form" name="edit-form">
-            <fieldset class="form__fieldset">
-              <input type="text" id="name" name="name" class="form__input form__input_type_name"
-                placeholder="Name Surname" required />
-              <input type="text" id="description" name="description" class="form__input form__input_type_description"
-                placeholder="description" required />
-            </fieldset>
-            <fieldset class="form__fieldset">
-              <button class="form__button" type="submit">Save</button>
-            </fieldset>
-          </form>
+            <form class="form form_type_card" name="card-form">
+              <fieldset class="form__fieldset">
+                <input type="text" id="place" name="place" class="form__input form__input_type_place"
+                  placeholder="Title" required />
+                <input type="url" id="link" name="link" class="form__input form__input_type_link"
+                  placeholder="Image link" required />
+              </fieldset>
+              <fieldset class="form__fieldset">
+                <button class="form__button" type="submit">Create</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div class="popup popup_type_image">
+          <div class="popup_type_image-wrapper">
+            <button type="button" class="popup__close-btn_type_image">
+              <img src="./images/Close_Icon.svg" alt="close sign" class="popup__close-sign_type_image">
+            </button>
+            <img alt="Location Image" class="popup__card-image">
+            <h2 class="popup__card-title"></h2>
+          </div>
         </div>
       </section>
-      <section class="popup card-popup">
-        <div class="popup__box">
-          <div class="popup__header">
-            <h2 class="popup__title">New Place</h2>
-            <button class="popup__close-btn popup__close-btn_type_card" type="button">
-              <img src="./images/Close_Icon.svg" alt="close button" class="popup__close-sign" />
-            </button>
-          </div>
 
-          <form class="form card-form" name="card-form">
-            <fieldset class="form__fieldset">
-              <input type="text" id="place" name="place" class="form__input form__input_type_place" placeholder="Title"
-                required />
-              <input type="url" id="link" name="link" class="form__input form__input_type_link" placeholder="Image link"
-                required />
-            </fieldset>
-            <fieldset class="form__fieldset">
-              <button class="form__button" type="submit">Create</button>
-            </fieldset>
-          </form>
-        </div>
-      </section>
       <section class="elements">
 
       </section>
@@ -87,6 +98,11 @@
   </div>
   <template id="card-template">
     <article class="card">
+      <!-- <div class="card__popup">
+        <button class="card__popup-close-btn"></button>
+        <img alt="Card Image" class="card__popup-image" />
+        <h2 class="card__popup-title"></h2> -->
+      </div>
       <img alt="Card Image" class="card__image" />
       <button class="card__delete-btn" type="button"></button>
       <div class="card__title-wrapper">
@@ -95,6 +111,13 @@
         </button>
       </div>
     </article>
+  </template>
+  <template id="card-popup-template">
+    <div class="popup popup_type_image">
+      <button type="button" class="popup__close-sign"></button>
+      <img alt="Location Image" class="popup__image">
+      <h2 class="popup__card-title"></h2>
+    </div>
   </template>
   <!-- <script src="./scripts/like_fill.js"></script> -->
   <script src="./scripts/edit_cards.js"></script>
