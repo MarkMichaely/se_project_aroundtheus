@@ -63,13 +63,12 @@
   .form__button {
     font-size: 14px;
     line-height: 17px;
+    margin-top: calc(46px - 30px);
+    height: 46px;
   }
   .form__input {
     padding-bottom: 9px;
     margin-bottom: 30px;
   }
-  .form__button {
-    margin-top: calc(46px - 30px);
-    height: 46px;
-  }
+  
 }
