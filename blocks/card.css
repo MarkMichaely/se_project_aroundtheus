@@ -73,29 +73,3 @@
   cursor: pointer;
   opacity: 0.6;
 }
-/* .card__popup{
-  position: absolute;
-  z-index: 2;
-
-}
-.card__popup-image{
-  max-width: 75vw;
-  max-height: 75vh;
-
-}
-.card__popup-close-btn{
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  position: relative;
-  background-image: url("../images/delete_button.svg") no-repeat center;
-  transition: ease 0.2s;
-  opacity: 1;
-  width: 40px;
-  height: 40px;
-  
-}
-.card__popup-close-btn:hover{
-  cursor: pointer;
-  opacity: 0.6;
-} */
