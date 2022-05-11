@@ -83,7 +83,12 @@
                     class="form__input form__input_type_name"
                     placeholder="Name Surname"
                     required
+                    maxlength="40"
+                    minlength="2"
                   />
+                  <span class="form__input-error name-error"></span>
+                </fieldset>
+                <fieldset class="form__fieldset">
                   <input
                     type="text"
                     id="description"
@@ -91,9 +96,12 @@
                     class="form__input form__input_type_description"
                     placeholder="description"
                     required
+                    maxlength="200"
+                    minlength="2"
                   />
+                  <span class="form__input-error description-error"></span>
                 </fieldset>
-                <fieldset class="form__fieldset">
+                <fieldset class="form__fieldset form__fieldset_type_submit">
                   <button class="form__button" type="submit">Save</button>
                 </fieldset>
               </form>
@@ -124,7 +132,12 @@
                     class="form__input form__input_type_place"
                     placeholder="Title"
                     required
+                    maxlength="30"
+                    minlength="1"
                   />
+                  <span class="form__input-error place-error"></span>
+                </fieldset>
+                <fieldset class="form__fieldset">
                   <input
                     type="url"
                     id="link"
@@ -133,8 +146,9 @@
                     placeholder="Image link"
                     required
                   />
+                  <span class="form__input-error link-error"></span>
                 </fieldset>
-                <fieldset class="form__fieldset">
+                <fieldset class="form__fieldset form__fieldset_type_submit">
                   <button class="form__button" type="submit">Create</button>
                 </fieldset>
               </form>
@@ -177,5 +191,6 @@
     <script src="./scripts/popup_utils.js"></script>
     <script src="./scripts/edit_cards.js"></script>
     <script src="./scripts/edit_profile.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
