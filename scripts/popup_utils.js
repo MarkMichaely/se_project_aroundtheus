@@ -1,3 +1,5 @@
+const closeButtons = document.querySelectorAll(".popup__close-btn");
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   setListeners(popup);
@@ -27,3 +29,8 @@ function addClickOverlayListener(evt) {
     closePopup(evt.target);
   }
 }
+
+closeButtons.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+});

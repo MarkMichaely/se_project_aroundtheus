@@ -31,13 +31,9 @@ const imagePopupImage = document.querySelector(".popup__card-image");
 const addCardBtn = document.querySelector(".profile__add-btn");
 const elements = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#card-template").content;
-const closeCardBtn = document.querySelector(".popup__close-btn_type_card");
 const cardFormPlace = document.querySelector(".form__input_type_place");
 const cardFormLink = document.querySelector(".form__input_type_link");
 const imagePopup = document.querySelector(".popup_type_image");
-const closePopupImageBtn = document.querySelector(
-  ".popup__close-btn_type_image"
-);
 
 function handleImageClick(card) {
   imagePopupImage.src = card.link;
@@ -76,6 +72,7 @@ function createCard(cardElement) {
 function initCards() {
   initialCards.forEach((item) => {
     addCard({ title: item.name, link: item.link });
+    
   });
 }
 
@@ -91,13 +88,11 @@ function handleAddCardClick() {
 
 function handleCardSubmit(evt) {
   evt.preventDefault();
-  addCard(cardFormPlace.value, cardFormLink.value);
+  addCard({title :cardFormPlace.value, link:cardFormLink.value});
   closePopup(cardPopup);
 }
 
 addCardBtn.addEventListener("click", handleAddCardClick);
-closePopupImageBtn.addEventListener("click", () => closePopup(imagePopup));
-closeCardBtn.addEventListener("click", () => closePopup(cardPopup));
 cardForm.addEventListener("submit", handleCardSubmit);
 
 initCards();
