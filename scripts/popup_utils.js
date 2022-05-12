@@ -1,11 +1,6 @@
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   setListeners(popup);
-  toggleButtonState(
-    Array.from(popup.querySelectorAll(".form__input")),
-    popup.querySelector(".form__button"),
-    "form__button_disabled"
-  );
 }
 
 function closePopup(popup) {
@@ -22,8 +17,8 @@ function removeListeners(popup) {
 }
 
 function addEscapeWindowListener(evt) {
-  const openPopup = document.querySelector(".popup_opened");
   if (evt.key === "Escape") {
+    const openPopup = document.querySelector(".popup_opened");
     closePopup(openPopup);
   }
 }

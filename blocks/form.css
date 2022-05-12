@@ -28,7 +28,6 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: content-box;
   padding-bottom: 13px;
-  /* margin-bottom: 34px; */
 }
 
 .form__input::placeholder {

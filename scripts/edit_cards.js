@@ -81,6 +81,11 @@ function initCards() {
 
 function handleAddCardClick() {
   cardForm.reset();
+  toggleButtonState(
+    Array.from(cardPopup.querySelectorAll(".form__input")),
+    cardPopup.querySelector(".form__button"),
+    "form__button_disabled"
+  );
   openPopup(cardPopup);
 }
 
