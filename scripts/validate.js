@@ -39,12 +39,6 @@ function checkInputValidity(form, config) {
   });
 }
 
-// editFormElement.addEventListener("input", function () {
-//   checkInputValidity(editFormElement);
-// });
-// cardFormElement.addEventListener("input", function () {
-//   checkInputValidity(cardFormElement);
-// });
 function enableValidation(config) {
   const formArray = Array.from(document.querySelectorAll(config.formSelector));
   formArray.forEach((form) => {
