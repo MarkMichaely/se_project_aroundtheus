@@ -16,7 +16,6 @@
     <title>Around The U.S.</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-
   <body class="body">
     <div class="page">
       <header class="header">
@@ -74,7 +73,7 @@
                   />
                 </button>
               </div>
-              <form class="form form_type_edit" name="edit-form">
+              <form class="form form_type_edit" name="edit-form" novalidate>
                 <fieldset class="form__fieldset">
                   <input
                     type="text"
@@ -123,7 +122,7 @@
                 </button>
               </div>
 
-              <form class="form form_type_card" name="card-form">
+              <form class="form form_type_card" name="card-form" novalidate>
                 <fieldset class="form__fieldset">
                   <input
                     type="text"
@@ -189,8 +188,8 @@
       </article>
     </template>
     <script src="./scripts/popup_utils.js"></script>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/edit_cards.js"></script>
     <script src="./scripts/edit_profile.js"></script>
-    <script src="./scripts/validate.js"></script>
   </body>
 </html>
