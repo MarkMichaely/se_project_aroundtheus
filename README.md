@@ -17,4 +17,4 @@ The design was taken from a .Fig file that Opend with Figma, a desinging tool fo
 
 **GitHub Pages**
 
-https://markmichaely.github.io/web_project_4/
+https://markmichaely.github.io/se_project_aroundtheus/
