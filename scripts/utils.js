@@ -34,3 +34,5 @@ closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
 });
+
+export { openPopup, closePopup };
