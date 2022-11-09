@@ -10,11 +10,11 @@ function closePopup(popup) {
   removeListeners(popup);
 }
 function setListeners(popup) {
-  popup.addEventListener("mousedown", HandleOverlay);
+  popup.addEventListener("mousedown", handleOverlay);
   window.addEventListener("keydown", handleEscapeKey);
 }
 function removeListeners(popup) {
-  popup.removeEventListener("mousedown", HandleOverlay);
+  popup.removeEventListener("mousedown", handleOverlay);
   window.removeEventListener("keydown", handleEscapeKey);
 }
 
@@ -24,7 +24,7 @@ function handleEscapeKey(evt) {
     closePopup(openPopup);
   }
 }
-function HandleOverlay(evt) {
+function handleOverlay(evt) {
   if (evt.target.classList.contains("popup_opened")) {
     closePopup(evt.target);
   }
