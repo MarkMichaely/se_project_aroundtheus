@@ -6,21 +6,27 @@ export default class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
+
+    this._inputList = Array.from(
+      this._form.querySelectorAll(this._inputSelector)
+    );
+    this._formButton = this._form.querySelector(this._submitButtonSelector);
+    
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
-  _toggleButtonState(inputList) {
-    const formButton = this._form.querySelector(this._submitButtonSelector);
-    if (this._hasInvalidInput(inputList)) {
-      formButton.classList.add(this._inactiveButtonClass);
-      formButton.disabled = true;
+  _toggleButtonState() {
+    
+    if (this._hasInvalidInput()) {
+      this._formButton.classList.add(this._inactiveButtonClass);
+      this._formButton.disabled = true;
     } else {
-      formButton.classList.remove(this._inactiveButtonClass);
-      formButton.disabled = false;
+      this._formButton.classList.remove(this._inactiveButtonClass);
+      this._formButton.disabled = false;
     }
   }
   _showError(input) {
@@ -37,12 +43,9 @@ export default class FormValidator {
     formError.textContent = "";
   }
   _checkInputValidity() {
-    const inputList = Array.from(
-      this._form.querySelectorAll(this._inputSelector)
-    );
-
-    this._toggleButtonState(inputList);
-    inputList.forEach((formInput) => {
+ 
+    this._toggleButtonState();
+    this._inputList.forEach((formInput) => {
       if (!formInput.validity.valid) {
         this._showError(formInput);
       } else {
@@ -50,6 +53,14 @@ export default class FormValidator {
       }
     });
   }
+  resetValidation() {
+    this._toggleButtonState(); 
+    this._inputList.forEach((inputElement) => {
+      this._hideError(inputElement) 
+    });
+
+  }
+
   enableValidation() {
     this._form.addEventListener("input", () => this._checkInputValidity());
   }

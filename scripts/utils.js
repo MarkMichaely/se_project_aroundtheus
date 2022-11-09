@@ -10,21 +10,21 @@ function closePopup(popup) {
   removeListeners(popup);
 }
 function setListeners(popup) {
-  popup.addEventListener("click", addClickOverlayListener);
-  window.addEventListener("keydown", addEscapeWindowListener);
+  popup.addEventListener("mousedown", HandleOverlay);
+  window.addEventListener("keydown", handleEscapeKey);
 }
 function removeListeners(popup) {
-  popup.removeEventListener("click", addClickOverlayListener);
-  window.removeEventListener("keydown", addEscapeWindowListener);
+  popup.removeEventListener("mousedown", HandleOverlay);
+  window.removeEventListener("keydown", handleEscapeKey);
 }
 
-function addEscapeWindowListener(evt) {
+function handleEscapeKey(evt) {
   if (evt.key === "Escape") {
     const openPopup = document.querySelector(".popup_opened");
     closePopup(openPopup);
   }
 }
-function addClickOverlayListener(evt) {
+function HandleOverlay(evt) {
   if (evt.target.classList.contains("popup_opened")) {
     closePopup(evt.target);
   }

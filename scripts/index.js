@@ -55,11 +55,11 @@ const profileJobInput = document.querySelector(".form__input_type_description");
 const profileName = document.querySelector(".profile-info__name");
 const profileDescription = document.querySelector(".profile-info__description");
 
-const editFormElement = new FormValidator(
+const profieFormValidator = new FormValidator(
   config,
-  document.querySelector(".form_type_edit")
+  formProfileElement
 );
-const cardFormElement = new FormValidator(config, cardForm);
+const cardFormValidator = new FormValidator(config, cardForm);
 function addCard(card) {
   const cardObj = new Card(card, CARD_TEMPLATE_SECLECTOR, handleImageClick);
   const cardElement = cardObj.generateCard();
@@ -78,9 +78,7 @@ function initCards() {
 
 function handleAddCardClick() {
   cardForm.reset();
-  cardFormElement._toggleButtonState(
-    Array.from(cardPopup.querySelectorAll(".form__input"))
-  );
+  cardFormValidator.resetValidation();
   openPopup(cardPopup);
 }
 
@@ -92,6 +90,7 @@ function handleCardSubmit(evt) {
 
 function handleEditButtonClick() {
   fillProfileForm();
+  profieFormValidator.resetValidation();
   openPopup(editPopup);
 }
 function handleImageClick(card) {
@@ -121,5 +120,5 @@ formProfileElement.addEventListener("submit", handleProfileFormSubmit);
 profileFormEditBtn.addEventListener("click", handleEditButtonClick);
 initCards();
 
-editFormElement.enableValidation();
-cardFormElement.enableValidation();
+profieFormValidator.enableValidation();
+cardFormValidator.enableValidation();

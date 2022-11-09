@@ -17,6 +17,7 @@ class Card {
 
   _handleTrashButton = (evt) => {
     this._cardElement.remove();
+    this._cardElement = null;
   };
 
   _addEventListeners = () => {
