@@ -22,7 +22,7 @@ class Card {
 
   _addEventListeners = () => {
     this._cardImage.addEventListener("click", () =>
-      this._handleImageClick({ title: this._text, link: this._link })
+      this._handleImageClick({ link: this._link, title: this._text })
     );
     this._likeButton.addEventListener("click", this._handleLikeButton);
     this._trashButton.addEventListener("click", this._handleTrashButton);
