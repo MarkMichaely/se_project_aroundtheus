@@ -21,11 +21,11 @@ export default class Popup {
   };
 
   setEventListeners() {
-    this._popupElement.addEvenetListener("click", (evt) => {
+    this._popupElement.addEventListener("click", (evt) => {
       if (evt.target.classList.contains("popup_opened")) {
         this.close();
       }
     });
-    this._closeButton.addEvenetListener("click", () => this.close());
+    this._closeButton.addEventListener("click", () => this.close());
   }
 }
