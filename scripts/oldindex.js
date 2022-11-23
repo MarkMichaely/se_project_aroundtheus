@@ -1,31 +1,30 @@
 import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
 import Card from "./Card.js";
 import { openPopup, closePopup } from "./utils.js";
 
 const initialCards = [
   {
-    title: "Yosemite Valley",
+    name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
   },
   {
-    title: "Lake Louise",
+    name: "Lake Louise",
     link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
   },
   {
-    title: "Bald Mountains",
+    name: "Bald Mountains",
     link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
   },
   {
-    title: "Latemar",
+    name: "Latemar",
     link: "https://code.s3.yandex.net/web-code/latemar.jpg",
   },
   {
-    title: "Vanoise National Park",
+    name: "Vanoise National Park",
     link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
   },
   {
-    title: "Lago di Braies",
+    name: "Lago di Braies",
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
@@ -42,7 +41,7 @@ const cardForm = document.querySelector(".form_type_card");
 const imagePopupTitle = document.querySelector(".popup__card-title");
 const imagePopupImage = document.querySelector(".popup__card-image");
 const addCardBtn = document.querySelector(".profile__add-btn");
-const elements = ".elements";
+const elements = document.querySelector(".elements");
 const CARD_TEMPLATE_SECLECTOR = "#card-template";
 const cardFormPlace = document.querySelector(".form__input_type_place");
 const cardFormLink = document.querySelector(".form__input_type_link");
@@ -58,17 +57,21 @@ const profileDescription = document.querySelector(".profile-info__description");
 
 const profieFormValidator = new FormValidator(config, formProfileElement);
 const cardFormValidator = new FormValidator(config, cardForm);
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (card) => {
-      const cardObj = new Card(card, CARD_TEMPLATE_SECLECTOR, handleImageClick);
-      const cardElement = cardObj.generateCard();
-      cardSection.addItem(cardElement);
-    },
-  },
-  elements
-);
+function addCard(card) {
+  const cardObj = new Card(card, CARD_TEMPLATE_SECLECTOR, handleImageClick);
+  const cardElement = cardObj.generateCard();
+  createCard(cardElement);
+}
+
+function createCard(cardElement) {
+  elements.prepend(cardElement);
+}
+
+function initCards() {
+  initialCards.forEach((item) => {
+    addCard({ title: item.name, link: item.link });
+  });
+}
 
 function handleAddCardClick() {
   cardForm.reset();
@@ -112,6 +115,7 @@ addCardBtn.addEventListener("click", handleAddCardClick);
 cardForm.addEventListener("submit", handleCardSubmit);
 formProfileElement.addEventListener("submit", handleProfileFormSubmit);
 profileFormEditBtn.addEventListener("click", handleEditButtonClick);
-cardSection.renderItems();
+initCards();
+
 profieFormValidator.enableValidation();
 cardFormValidator.enableValidation();
