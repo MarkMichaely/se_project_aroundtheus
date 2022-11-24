@@ -1,9 +1,9 @@
-import FormValidator from "./FormValidator.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import Section from "./Section.js";
-import Card from "./Card.js";
-// import { openPopup, closePopup } from "./utils.js";
+import "./index.css";
+import FormValidator from "../components/FormValidator";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
 import {
   initialCards,
   config,
@@ -24,8 +24,8 @@ import {
   profileDescription,
   profileJobInput,
   profileName,
-} from "./constants.js";
-import UserInfo from "./UserInfo.js";
+} from "../components/constants.js";
+import UserInfo from "../components/UserInfo.js";
 
 const profieFormValidator = new FormValidator(config, formProfileElement);
 const cardFormValidator = new FormValidator(config, cardForm);

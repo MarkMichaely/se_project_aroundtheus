@@ -4,10 +4,6 @@ export default class UserInfo {
     this._jobElement = document.querySelector(jobSelector);
   }
   getUserInfo() {
-    // const obj = {
-    //   name: this._nameElement.textContent,
-    //   job: this._jobElement.textContent,
-    // };
     return {
       name: this._nameElement.textContent,
       job: this._jobElement.textContent,
