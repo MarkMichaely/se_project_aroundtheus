@@ -8,12 +8,12 @@ export default class Section{
     renderItems(){
         this._container.innerHTML = "";
         this._itmes.forEach(element => {
-            this._renderer(element);
+            this.addItem(element);
         });
     }
 
     addItem(item){
-        // const card = this._renderer(item);
-        this._container.prepend(item);
+        const card = this._renderer(item);
+        this._container.prepend(card);
     }
 }

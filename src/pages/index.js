@@ -16,13 +16,9 @@ import {
   IMAGE_POPUP_SELECTOR,
   cardForm,
   addCardBtn,
-  cardFormPlace,
-  cardFormLink,
   formProfileElement,
   profileFormEditBtn,
-  profileNameInput,
   profileDescription,
-  profileJobInput,
   profileName,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
@@ -33,11 +29,10 @@ const imagePopup = new PopupWithImage(IMAGE_POPUP_SELECTOR);
 const profileFormPopup = new PopupWithForm(
   {
     handleFormSubmit: (evt, data) => {
-      console.log(data);
       evt.preventDefault();
       profileInfoElement.setUserInfo({
-        name: profileNameInput.value,
-        job: profileJobInput.value,
+        name: data.name,
+        job: data.description,
       });
       profileFormPopup.close();
     },
@@ -46,40 +41,34 @@ const profileFormPopup = new PopupWithForm(
 );
 const cardFormPopup = new PopupWithForm(
   {
-    handleFormSubmit: (evt) => {
+    handleFormSubmit: (evt, data) => {
       evt.preventDefault();
-      const cardObj = new Card(
-        {
-          data: { title: cardFormPlace.value, link: cardFormLink.value },
-          handleImageClick: (data) => {
-            imagePopup.open({ name: data.title, link: data.link });
-          },
-        },
-
-        CARD_TEMPLATE_SECLECTOR
-      );
-      const cardElement = cardObj.generateCard();
-      cardSection.addItem(cardElement);
+      cardSection.addItem({title: data.place, link: data.link});
       cardFormPopup.close();
     },
   },
   CARD_FORM_POPUP
 );
+
+function createCard (card){
+  const cardObj = new Card(
+    {
+      data: card,
+      handleImageClick: (data) => {
+        imagePopup.open({ name: data.title, link: data.link });
+      },
+    },
+    CARD_TEMPLATE_SECLECTOR
+  );
+  return cardObj;
+}
 const cardSection = new Section(
   {
     items: initialCards,
     renderer: (card) => {
-      const cardObj = new Card(
-        {
-          data: card,
-          handleImageClick: (data) => {
-            imagePopup.open({ name: data.title, link: data.link });
-          },
-        },
-        CARD_TEMPLATE_SECLECTOR
-      );
+      const cardObj = createCard(card);
       const cardElement = cardObj.generateCard();
-      cardSection.addItem(cardElement);
+      return cardElement;
     },
   },
   ELEMENTS_SELECTOR
@@ -102,8 +91,7 @@ cardFormPopup.setEventListeners();
 profileFormPopup.setEventListeners();
 profileFormEditBtn.addEventListener("click", () => {
   const temp = profileInfoElement.getUserInfo();
-  profileNameInput.value = temp.name;
-  profileJobInput.value = temp.job;
+  profileFormPopup.setInputValues({name: temp.name, description: temp.job});
   profieFormValidator.resetValidation();
   profileFormPopup.open();
 });
