@@ -24,7 +24,7 @@ import {
   profileDescription,
   profileJobInput,
   profileName,
-} from "../components/constants.js";
+} from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 
 const profieFormValidator = new FormValidator(config, formProfileElement);
@@ -32,7 +32,8 @@ const cardFormValidator = new FormValidator(config, cardForm);
 const imagePopup = new PopupWithImage(IMAGE_POPUP_SELECTOR);
 const profileFormPopup = new PopupWithForm(
   {
-    handleFormSubmit: (evt) => {
+    handleFormSubmit: (evt, data) => {
+      console.log(data);
       evt.preventDefault();
       profileInfoElement.setUserInfo({
         name: profileNameInput.value,
