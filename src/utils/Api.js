@@ -1,6 +1,3 @@
-
-
-
 export default class API {
     constructor(config){
         this.url = config.url;
@@ -22,7 +19,19 @@ export default class API {
             }
             return Promise.reject(`Error: ${res.status}`);
         })
-        
-        
+
     }
+getInitialCards(){
+    return fetch(`${this.url}/cards`, {
+        method: "GET",
+        headers: this.headers,
+
+    })
+    .then(res =>{ 
+        if(res.ok){
+            return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+    })
+} 
 }

@@ -25,7 +25,7 @@ import {
   PROFILE_AVATAR_SELECTOR
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
-const cardsApi = new API(api_config);
+
 const profieFormValidator = new FormValidator(validator_config, formProfileElement);
 const cardFormValidator = new FormValidator(validator_config, cardForm);
 const imagePopup = new PopupWithImage(IMAGE_POPUP_SELECTOR);
@@ -67,7 +67,6 @@ function createCard (card){
 }
 const cardSection = new Section(
   {
-    items: initialCards,
     renderer: (card) => {
       const cardObj = createCard(card);
       const cardElement = cardObj.generateCard();
@@ -99,6 +98,10 @@ profileFormEditBtn.addEventListener("click", () => {
 cardSection.renderItems();
 profieFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+
+
+///////////////////////////API////////////////////////////////
+const cardsApi = new API(api_config);
 cardsApi.getUserInfo().then(res=>
   {const userInfo = {
     name : res.name,
@@ -112,4 +115,12 @@ profileInfoElement.setUserInfo({
 });
 
   });
+cardsApi.getInitialCards().then((cards)=>{
+  cardSection.renderItems(cards);
+});
 
+
+
+
+
+///////////////////////////API////////////////////////////////
