@@ -4,9 +4,10 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
+import API from "../utils/Api.js";
 import {
   initialCards,
-  config,
+  validator_config,
   ELEMENTS_SELECTOR,
   CARD_TEMPLATE_SECLECTOR,
   PROFILE_DESCRIPTION,
@@ -20,11 +21,13 @@ import {
   profileFormEditBtn,
   profileDescription,
   profileName,
+  api_config,
+  PROFILE_AVATAR_SELECTOR
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
-
-const profieFormValidator = new FormValidator(config, formProfileElement);
-const cardFormValidator = new FormValidator(config, cardForm);
+const cardsApi = new API(api_config);
+const profieFormValidator = new FormValidator(validator_config, formProfileElement);
+const cardFormValidator = new FormValidator(validator_config, cardForm);
 const imagePopup = new PopupWithImage(IMAGE_POPUP_SELECTOR);
 const profileFormPopup = new PopupWithForm(
   {
@@ -76,12 +79,10 @@ const cardSection = new Section(
 const profileInfoElement = new UserInfo({
   nameSelector: PROFILE_NAME_SELECTOR,
   jobSelector: PROFILE_DESCRIPTION,
+  avatarSelector: PROFILE_AVATAR_SELECTOR,
 });
 
-profileInfoElement.setUserInfo({
-  name: profileName.textContent,
-  job: profileDescription.textContent,
-});
+
 addCardBtn.addEventListener("click", () => {
   cardFormValidator.resetValidation();
   cardFormPopup.open();
@@ -98,3 +99,17 @@ profileFormEditBtn.addEventListener("click", () => {
 cardSection.renderItems();
 profieFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+cardsApi.getUserInfo().then(res=>
+  {const userInfo = {
+    name : res.name,
+    about : res.about,
+    avatar : res.avatar
+}
+profileInfoElement.setUserInfo({
+  name: userInfo.name,
+  job: userInfo.about,
+  avatar: userInfo.avatar
+});
+
+  });
+
