@@ -35,6 +35,25 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  align-self: center;
+}
+.card__like-btn-wrapper{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 3px;
+  align-self: center;
+
+}
+.card__like-btn-counter{
+  font-family: "Inter", Arial, sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+text-align: center;
+color: #000000;
+margin: 0;
 }
 .card__like-btn {
   padding: 0;
@@ -53,6 +72,7 @@
 }
 .card__like-btn-filled {
   background-image: url("../images/like_icon_filled.svg");
+  
   
 }
 .card__delete-btn{

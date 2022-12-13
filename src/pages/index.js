@@ -123,7 +123,8 @@ profileInfoElement.setUserInfo({
 });
 
   }).catch(err=>console.log(err));
-cardsApi.getInitialCards().then((cards)=>{
+
+  cardsApi.getInitialCards().then((cards)=>{
   cardSection.renderItems(cards);
 }).catch(err=>console.log(err));
 
@@ -133,4 +134,3 @@ cardsApi.getInitialCards().then((cards)=>{
 
 ///////////////////////////API////////////////////////////////
 
-cardSection.renderItems();
