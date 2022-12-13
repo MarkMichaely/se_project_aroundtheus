@@ -37,6 +37,23 @@ const profileFormPopup = new PopupWithForm(
         name: data.name,
         job: data.description,
       });
+      cardsApi.editProfile({
+        name: data.name,
+        job: data.description
+      });
+      cardsApi.getUserInfo().then(res=>
+        {const userInfo = {
+          name : res.name,
+          about : res.about,
+          avatar : res.avatar
+      }
+      profileInfoElement.setUserInfo({
+        name: userInfo.name,
+        job: userInfo.about,
+        avatar: userInfo.avatar
+      });
+      
+        });
       profileFormPopup.close();
     },
   },

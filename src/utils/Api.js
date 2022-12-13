@@ -7,31 +7,35 @@ export default class API {
         }
     }
 
-    getUserInfo(){
-        return fetch(`${this.url}/users/me`, {
+    async getUserInfo(){
+        const res = await fetch(`${this.url}/users/me`, {
             method: "GET",
             headers: this.headers,
-
-        })
-        .then(res =>{ 
-            if(res.ok){
-                return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-        })
-
-    }
-getInitialCards(){
-    return fetch(`${this.url}/cards`, {
-        method: "GET",
-        headers: this.headers,
-
-    })
-    .then(res =>{ 
-        if(res.ok){
+        });
+        if (res.ok) {
             return res.json();
         }
-        return Promise.reject(`Error: ${res.status}`);
-    })
+        return await Promise.reject(`Error: ${res.status}`);
+
+    }
+    async getInitialCards(){
+    const res = await fetch(`${this.url}/cards`, {
+        method: "GET",
+        headers: this.headers,
+    });
+    if (res.ok) {
+        return res.json();
+    }
+    return await Promise.reject(`Error: ${res.status}`);
 } 
+    async editProfile({name, job}){
+   const res =await fetch(`${this.url}/users/me`, {
+  method: "PATCH",
+  headers: this.headers,
+  body: JSON.stringify({
+    name: `${name}`,
+    about: `${job}`
+  })
+}); 
+}
 }

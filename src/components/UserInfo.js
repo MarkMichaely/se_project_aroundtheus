@@ -10,6 +10,11 @@ export default class UserInfo {
       job: this._jobElement.textContent,
     };
   }
+  setUserInfo({ name, job}) {
+    this._nameElement.textContent = name;
+    this._jobElement.textContent = job;
+  }
+  
   setUserInfo({ name, job ,avatar}) {
     this._nameElement.textContent = name;
     this._jobElement.textContent = job;
