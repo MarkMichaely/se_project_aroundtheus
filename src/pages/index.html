@@ -96,6 +96,21 @@
             <h2 class="popup__card-title"></h2>
           </div>
         </div>
+        <div class="popup popup_type_delete">
+          <div class="popup__box">
+            <div class="popup__header">
+              <h2 class="popup__title">Are you sure?</h2>
+              <button class="popup__close-btn popup__close-btn_type_edit" type="button">
+                <img src="<%=require('../images/Close_Icon.svg')%>" alt="close button" class="popup__close-sign" />
+              </button>
+            </div>
+            <form class="form form_type_delete" name="delete-form" novalidate>
+              <fieldset class="form__fieldset form__fieldset_type_submit">
+                <button class="form__button" type="submit">Yes</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </section>
 
       <section class="elements"></section>

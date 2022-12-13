@@ -89,6 +89,9 @@ margin: 0;
   right: 15px;
   
 }
+.card__delete-btn-hidden{
+  visibility: hidden;
+}
 .card__delete-btn:hover{
   cursor: pointer;
   opacity: 0.6;

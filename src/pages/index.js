@@ -22,13 +22,26 @@ import {
   profileDescription,
   profileName,
   api_config,
-  PROFILE_AVATAR_SELECTOR
+  PROFILE_AVATAR_SELECTOR,
+  DELETE_CONFIRM_POPUP_SELECTOR
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithButton from "../components/PopupWithButton";
 
 const profieFormValidator = new FormValidator(validator_config, formProfileElement);
 const cardFormValidator = new FormValidator(validator_config, cardForm);
 const imagePopup = new PopupWithImage(IMAGE_POPUP_SELECTOR);
+const deletionConfirmPopup = new PopupWithButton(
+  {
+    handleFormSubmit: (evt) => {
+      evt.preventDefault();
+      cardsApi.removeCard(deletionConfirmPopup.getCardId())
+      .then(deletionConfirmPopup.removeCardElement())
+      .catch(err=>console.log(err));
+      deletionConfirmPopup.close();
+    }
+  },DELETE_CONFIRM_POPUP_SELECTOR
+);
 const profileFormPopup = new PopupWithForm(
   {
     handleFormSubmit: (evt, data) => {
@@ -68,6 +81,10 @@ function createCard (card){
       handleImageClick: (data) => {
         imagePopup.open({ name: data.title, link: data.link });
       },
+      handleBinClick: (cardElement, id) => {
+        deletionConfirmPopup.open();
+        deletionConfirmPopup.setCardElement(cardElement, id);
+      }
     },
     CARD_TEMPLATE_SECLECTOR
   );
@@ -97,6 +114,7 @@ addCardBtn.addEventListener("click", () => {
 imagePopup.setEventListeners();
 cardFormPopup.setEventListeners();
 profileFormPopup.setEventListeners();
+deletionConfirmPopup.setEventListeners();
 profileFormEditBtn.addEventListener("click", () => {
   const temp = profileInfoElement.getUserInfo();
   profileFormPopup.setInputValues({name: temp.name, description: temp.job});

@@ -57,4 +57,15 @@ async addCard({name, link}){
     }
     return await Promise.reject(`Error: ${res.status}`);
 }
+async removeCard(id){
+    const res = await fetch(`${this.url}/cards/${id}`,
+    {
+        method:"DELETE",
+        headers: this.headers,
+    })
+    if (res.ok) {
+        return res.json();
+    }
+    return await Promise.reject(`Error: ${res.status}`);
+}
 }
