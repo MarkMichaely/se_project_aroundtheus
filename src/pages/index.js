@@ -41,19 +41,7 @@ const profileFormPopup = new PopupWithForm(
         name: data.name,
         job: data.description
       });
-      cardsApi.getUserInfo().then(res=>
-        {const userInfo = {
-          name : res.name,
-          about : res.about,
-          avatar : res.avatar
-      }
-      profileInfoElement.setUserInfo({
-        name: userInfo.name,
-        job: userInfo.about,
-        avatar: userInfo.avatar
-      });
       
-        });
       profileFormPopup.close();
     },
   },
@@ -61,9 +49,12 @@ const profileFormPopup = new PopupWithForm(
 );
 const cardFormPopup = new PopupWithForm(
   {
-    handleFormSubmit: (evt, data) => {
+    handleFormSubmit: async (evt, data) => {
       evt.preventDefault();
-      cardSection.addItem({title: data.place, link: data.link});
+      await cardsApi.addCard({name:data.place, link: data.link})
+      .then(cardSection.addItem({name: data.place, link: data.link}))
+      .catch(err=>console.log(err));
+      
       cardFormPopup.close();
     },
   },
@@ -112,7 +103,7 @@ profileFormEditBtn.addEventListener("click", () => {
   profieFormValidator.resetValidation();
   profileFormPopup.open();
 });
-cardSection.renderItems();
+
 profieFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
@@ -131,13 +122,15 @@ profileInfoElement.setUserInfo({
   avatar: userInfo.avatar
 });
 
-  });
+  }).catch(err=>console.log(err));
 cardsApi.getInitialCards().then((cards)=>{
   cardSection.renderItems(cards);
-});
+}).catch(err=>console.log(err));
 
 
 
 
 
 ///////////////////////////API////////////////////////////////
+
+cardSection.renderItems();

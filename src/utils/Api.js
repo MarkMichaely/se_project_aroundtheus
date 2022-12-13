@@ -36,6 +36,25 @@ export default class API {
     name: `${name}`,
     about: `${job}`
   })
-}); 
+});
+if (res.ok) {
+    return res.json();
+}
+return await Promise.reject(`Error: ${res.status}`);
+}
+
+async addCard({name, link}){
+    const res =await fetch(`${this.url}/cards`, {
+        method: "POST",
+        headers: this.headers,
+        body: JSON.stringify({
+          name: name,
+          link: link
+        })
+      }); 
+      if (res.ok) {
+        return res.json();
+    }
+    return await Promise.reject(`Error: ${res.status}`);
 }
 }
