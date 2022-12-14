@@ -34,7 +34,7 @@ export default class API {
   headers: this.headers,
   body: JSON.stringify({
     name: `${name}`,
-    about: `${job}`
+    about: `${job}`,
   })
 });
 if (res.ok) {
@@ -85,6 +85,20 @@ async unLikeCard(cardId){
         headers: this.headers,
 
     })
+    if (res.ok) {
+        return res.json();
+    }
+    return await Promise.reject(`Error: ${res.status}`);
+}
+async changeProfilePicture(link){
+    const res = await fetch(`${this.url}/users/me/avatar`, {
+        method:"PATCH",
+        headers: this.headers,
+        body: JSON.stringify({
+            avatar: link
+          })
+    })
+
     if (res.ok) {
         return res.json();
     }

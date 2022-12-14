@@ -20,14 +20,16 @@ const CARD_FORM_POPUP = ".popup_type_card";
 const PROFILE_FORM_POPUP = ".popup_type_edit";
 const IMAGE_POPUP_SELECTOR = ".popup_type_image";
 const DELETE_CONFIRM_POPUP_SELECTOR = ".popup_type_delete";
+const AVATAR_FORM_POPUP = ".popup_type_avatar";
 
 const cardForm = document.querySelector(".form_type_card");
 const addCardBtn = document.querySelector(".profile__add-btn");
-
-
+const avatarButton =document.querySelector(PROFILE_AVATAR_SELECTOR);
 
 const formProfileElement = document.querySelector(".form_type_edit");
 const profileFormEditBtn = document.querySelector(".profile-info__edit-button");
+
+const avatarFormElement = document.querySelector(".form_type_avatar");
 
 const MY_ID="339bdd3f46e607bf2c8e6140";
 export {
@@ -46,5 +48,8 @@ export {
   api_config,
   PROFILE_AVATAR_SELECTOR,
   DELETE_CONFIRM_POPUP_SELECTOR,
-  MY_ID
+  MY_ID,
+  AVATAR_FORM_POPUP,
+  avatarFormElement,
+  avatarButton
 };
