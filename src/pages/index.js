@@ -6,7 +6,6 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import API from "../utils/Api.js";
 import {
-  initialCards,
   validator_config,
   ELEMENTS_SELECTOR,
   CARD_TEMPLATE_SECLECTOR,
@@ -19,11 +18,10 @@ import {
   addCardBtn,
   formProfileElement,
   profileFormEditBtn,
-  profileDescription,
-  profileName,
   api_config,
   PROFILE_AVATAR_SELECTOR,
-  DELETE_CONFIRM_POPUP_SELECTOR
+  DELETE_CONFIRM_POPUP_SELECTOR,
+  MY_ID
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithButton from "../components/PopupWithButton";
@@ -65,7 +63,7 @@ const cardFormPopup = new PopupWithForm(
     handleFormSubmit: async (evt, data) => {
       evt.preventDefault();
       await cardsApi.addCard({name:data.place, link: data.link})
-      .then(cardSection.addItem({name: data.place, link: data.link}))
+      .then(res=> cardSection.addItem(res))
       .catch(err=>console.log(err));
       
       cardFormPopup.close();
@@ -81,9 +79,21 @@ function createCard (card){
       handleImageClick: (data) => {
         imagePopup.open({ name: data.title, link: data.link });
       },
-      handleBinClick: (cardElement, id) => {
+      handleBinClick: (cardElement, cardId) => {
         deletionConfirmPopup.open();
-        deletionConfirmPopup.setCardElement(cardElement, id);
+        deletionConfirmPopup.setCardElement(cardElement, cardId);
+      },
+      handleLikeClick: async (cardId,likeList ,likeCounter, heartIcon) =>{
+        if (!likeList.some(item=>item._id===MY_ID)){
+          const res = await cardsApi.likeCard(cardId).catch(err=>console.log(err));
+          likeCounter.textContent = res.likes.length;
+          heartIcon.classList.add("card__like-btn-filled");
+        }
+        else {
+          const res = await cardsApi.unLikeCard(cardId).catch(err=>console.log(err));
+          likeCounter.textContent = res.likes.length;
+          heartIcon.classList.remove("card__like-btn-filled");
+        }
       }
     },
     CARD_TEMPLATE_SECLECTOR

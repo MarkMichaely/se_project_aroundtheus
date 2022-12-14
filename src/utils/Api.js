@@ -57,11 +57,33 @@ async addCard({name, link}){
     }
     return await Promise.reject(`Error: ${res.status}`);
 }
-async removeCard(id){
-    const res = await fetch(`${this.url}/cards/${id}`,
+async removeCard(cardId){
+    const res = await fetch(`${this.url}/cards/${cardId}`,
     {
         method:"DELETE",
         headers: this.headers,
+    })
+    if (res.ok) {
+        return res.json();
+    }
+    return await Promise.reject(`Error: ${res.status}`);
+}
+async likeCard(cardId){
+    const res = await fetch(`${this.url}/cards/likes/${cardId}`, {
+        method:"PUT",
+        headers: this.headers,
+
+    })
+    if (res.ok) {
+        return res.json();
+    }
+    return await Promise.reject(`Error: ${res.status}`);
+}
+async unLikeCard(cardId){
+    const res = await fetch(`${this.url}/cards/likes/${cardId}`, {
+        method:"DELETE",
+        headers: this.headers,
+
     })
     if (res.ok) {
         return res.json();

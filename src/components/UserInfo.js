@@ -20,6 +20,7 @@ export default class UserInfo {
   setUserInfo({ name, job ,avatar}) {
     this._nameElement.textContent = name;
     this._jobElement.textContent = job;
-    this._avatarElement.src = avatar;
+    console.log(avatar);
+    this._avatarElement.style.backgroundImage = `url(${avatar})`; 
   }
 }

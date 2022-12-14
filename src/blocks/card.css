@@ -69,6 +69,7 @@ margin: 0;
 .card__like-btn:hover {
   cursor: pointer;
   opacity: 0.5;
+  
 }
 .card__like-btn-filled {
   background-image: url("../images/like_icon_filled.svg");

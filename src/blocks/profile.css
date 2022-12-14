@@ -5,12 +5,80 @@
   display: flex;
   margin-bottom: 50px;
 }
-.profile__avatar {
+.profile__avatar{
   margin: 0 30px 0 0;
+  padding: 0;
+  position: relative;
   width: 130px;
   height: 130px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  clip-path: circle(50%);
+  background-position: center;
+  background-blend-mode: darken;
+  z-index: 1;
+}
+.profile__avatar::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+  transition: .3s ease;
+  z-index: -1;
+}
+.profile__avatar:hover::after{
+  opacity: 0.8;
+  cursor: pointer;
+}
+.profile__avatar-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  clip-path: circle(50%);
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  
+}
+.profile__avatar-edit-icon{
+  position: relative;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 26px;
+  height: 26px;
+  z-index: 3;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.overlay{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom: 104%;
+  transition: .3s ease;
   background-color: transparent;
   clip-path: circle(50%);
+  z-index: 0;
+}
+.overlay::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+}
+.overlay:hover::after{
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 0, 0.8);
   
 }
 .profile__add-btn {
