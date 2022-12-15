@@ -33,6 +33,10 @@ import PopupWithButton from "../components/PopupWithButton";
 const profieFormValidator = new FormValidator(validator_config, formProfileElement);
 const cardFormValidator = new FormValidator(validator_config, cardForm);
 const avatarFormValidator = new FormValidator(validator_config, avatarFormElement);
+
+profieFormValidator.enableValidation();
+cardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 ///////////////////////FORM VALIDATION/////////////////////////
 
 const imagePopup = new PopupWithImage(IMAGE_POPUP_SELECTOR);
@@ -51,19 +55,19 @@ const profileFormPopup = new PopupWithForm(
   {
     handleFormSubmit: (evt, data) => {
       evt.preventDefault();
-      
+      profileFormPopup.renderFormLoading(true);
       cardsApi.editProfile({
         name: data.name,
         job: data.description
       })
       .then((res)=> {
-        console.log(res);
         profileInfoElement.setUserInfo({
           name: res.name,
           job: res.about,
           avatar: res.avatar
         });
-      }).catch(err=>console.log(err));;
+      }).catch(err=>console.log(err))
+      .finally(profileFormPopup.renderFormLoading(false));
       
       profileFormPopup.close();
     },
@@ -74,9 +78,11 @@ const cardFormPopup = new PopupWithForm(
   {
     handleFormSubmit: async (evt, data) => {
       evt.preventDefault();
+      cardFormPopup.renderFormLoading(true);
       await cardsApi.addCard({name:data.place, link: data.link})
       .then(res=> cardSection.addItem(res))
-      .catch(err=>console.log(err));
+      .catch(err=>console.log(err))
+      .finally(cardFormPopup.renderFormLoading(false));
       
       cardFormPopup.close();
     },
@@ -87,6 +93,7 @@ const avatarFormPopup = new PopupWithForm(
   {
     handleFormSubmit: async (evt, data) => {
       evt.preventDefault();
+      avatarFormPopup.renderFormLoading(true);
       await cardsApi.changeProfilePicture(data.link)
       .then((res)=>{
         profileInfoElement.setUserInfo({
@@ -95,7 +102,8 @@ const avatarFormPopup = new PopupWithForm(
         avatar: res.avatar
         })
       })
-      .catch(err=>console.log(err));
+      .catch(err=>console.log(err))
+      .finally(avatarFormPopup.renderFormLoading(false));
       avatarFormPopup.close();
     }
   },
@@ -165,33 +173,23 @@ profileFormEditBtn.addEventListener("click", () => {
   profileFormPopup.open();
 });
 
-profieFormValidator.enableValidation();
-cardFormValidator.enableValidation();
-avatarFormValidator.enableValidation();
-
-
 ///////////////////////////API////////////////////////////////
 const cardsApi = new API(api_config);
-cardsApi.getUserInfo().then(res=>
-  {const userInfo = {
-    name : res.name,
-    about : res.about,
-    avatar : res.avatar
-}
-profileInfoElement.setUserInfo({
-  name: userInfo.name,
-  job: userInfo.about,
-  avatar: userInfo.avatar
-});
 
-  }).catch(err=>console.log(err));
+async function init(){
+  const [cards, userData] = await Promise.all([
+    cardsApi.getInitialCards(),
+    cardsApi.getUserInfo()
 
-  cardsApi.getInitialCards().then((cards)=>{
+  ])
   cardSection.renderItems(cards);
-}).catch(err=>console.log(err));
-
-
-
+  profileInfoElement.setUserInfo({
+    name: userData.name,
+    job: userData.about,
+    avatar: userData.avatar
+  });
+}
+init();
 
 
 ///////////////////////////API////////////////////////////////

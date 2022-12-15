@@ -7,6 +7,8 @@ export default class PopupWithForm extends Popup {
     this._formInputList= Array.from(
       this._formElement.querySelectorAll(".form__input")
     );
+    this._formButton = this._formElement.querySelector(".form__button");
+    this._formButtonText = this._formButton.textContent;
   }
   _getInputValues() {
     const data = {};
@@ -16,7 +18,13 @@ export default class PopupWithForm extends Popup {
 
     return data;
   }
+renderFormLoading(isLoading){
+  if (isLoading){
+    this._formButton.textContent="Saving...";
+  }
+  else this._formButton.textContent=this._formButtonText;
 
+}
   setInputValues(data) {
     this._formInputList.forEach((input) => {
       if (data[input.name]!=null){
