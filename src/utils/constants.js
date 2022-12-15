@@ -48,7 +48,6 @@ export {
   api_config,
   PROFILE_AVATAR_SELECTOR,
   DELETE_CONFIRM_POPUP_SELECTOR,
-  MY_ID,
   AVATAR_FORM_POPUP,
   avatarFormElement,
   avatarButton

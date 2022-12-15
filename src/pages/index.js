@@ -4,7 +4,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
-import API from "../utils/Api.js";
+import API from "../components/Api.js";
 import {
   validator_config,
   ELEMENTS_SELECTOR,
@@ -21,7 +21,6 @@ import {
   api_config,
   PROFILE_AVATAR_SELECTOR,
   DELETE_CONFIRM_POPUP_SELECTOR,
-  MY_ID,
   AVATAR_FORM_POPUP,
   avatarFormElement,
   avatarButton
@@ -67,7 +66,7 @@ const profileFormPopup = new PopupWithForm(
           avatar: res.avatar
         });
       }).catch(err=>console.log(err))
-      .finally(profileFormPopup.renderFormLoading(false));
+      .finally(()=> profileFormPopup.renderFormLoading(false));
       
       profileFormPopup.close();
     },
@@ -82,7 +81,7 @@ const cardFormPopup = new PopupWithForm(
       await cardsApi.addCard({name:data.place, link: data.link})
       .then(res=> cardSection.addItem(res))
       .catch(err=>console.log(err))
-      .finally(cardFormPopup.renderFormLoading(false));
+      .finally(()=>cardFormPopup.renderFormLoading(false));
       
       cardFormPopup.close();
     },
@@ -103,7 +102,7 @@ const avatarFormPopup = new PopupWithForm(
         })
       })
       .catch(err=>console.log(err))
-      .finally(avatarFormPopup.renderFormLoading(false));
+      .finally(()=> avatarFormPopup.renderFormLoading(false));
       avatarFormPopup.close();
     }
   },
@@ -111,6 +110,7 @@ const avatarFormPopup = new PopupWithForm(
 );
 
 function createCard (card){
+  const temp=profileInfoElement.getUserInfo();
   const cardObj = new Card(
     {
       data: card,
@@ -122,21 +122,35 @@ function createCard (card){
         deletionConfirmPopup.setCardElement(cardElement, cardId);
       },
       handleLikeClick: async (cardId,likeList ,likeCounter, heartIcon) =>{
-        if (!likeList.some(item=>item._id===MY_ID)){
-          const res = await cardsApi.likeCard(cardId).catch(err=>console.log(err));
-          likeCounter.textContent = res.likes.length;
-          heartIcon.classList.add("card__like-btn-filled");
+        
+        if (!likeList.some(item=>item._id===temp.id)){
+          const res = await cardsApi.likeCard(cardId)
+          .then(res => {
+            likeCounter.textContent = res.likes.length;
+            heartIcon.classList.add("card__like-btn-filled");
+            likeList.push(temp.id);
+          })
+          .catch(err=>console.log(err));
         }
         else {
-          const res = await cardsApi.unLikeCard(cardId).catch(err=>console.log(err));
-          likeCounter.textContent = res.likes.length;
-          heartIcon.classList.remove("card__like-btn-filled");
+          const res = await cardsApi.unLikeCard(cardId)
+          .then(res=>{
+            likeCounter.textContent = res.likes.length;
+            heartIcon.classList.remove("card__like-btn-filled");
+            likeList.filter(item => item!=temp.id);            
+          })
+          .catch(err=>console.log(err));
+          
         }
       }
     },
     CARD_TEMPLATE_SECLECTOR
   );
-  return cardObj.generateCard();
+  
+  const cardElm =  cardObj.generateCard();
+  cardObj.hideTrashIcon(temp.id);
+  cardObj.toggleLikeButton(temp.id);
+  return cardElm;
 }
 const cardSection = new Section(
   {
@@ -177,17 +191,18 @@ profileFormEditBtn.addEventListener("click", () => {
 const cardsApi = new API(api_config);
 
 async function init(){
-  const [cards, userData] = await Promise.all([
-    cardsApi.getInitialCards(),
-    cardsApi.getUserInfo()
-
+  const [userData,cards ] = await Promise.all([
+    cardsApi.getUserInfo(),
+    cardsApi.getInitialCards()
   ])
-  cardSection.renderItems(cards);
+  
   profileInfoElement.setUserInfo({
     name: userData.name,
     job: userData.about,
-    avatar: userData.avatar
+    avatar: userData.avatar,
+    id: userData._id
   });
+  cardSection.renderItems(cards);
 }
 init();
 
