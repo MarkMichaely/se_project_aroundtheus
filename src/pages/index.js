@@ -44,9 +44,14 @@ const deletionConfirmPopup = new PopupWithButton(
     handleFormSubmit: (evt) => {
       evt.preventDefault();
       cardsApi.removeCard(deletionConfirmPopup.getCardId())
-      .then(deletionConfirmPopup.removeCardElement())
+      .then(()=>
+      {
+        deletionConfirmPopup.removeCardElement();
+        
+      })
+      .then(()=>deletionConfirmPopup.close())
       .catch(err=>console.log(err));
-      deletionConfirmPopup.close();
+      
     }
   },DELETE_CONFIRM_POPUP_SELECTOR
 );
@@ -57,18 +62,16 @@ const profileFormPopup = new PopupWithForm(
       profileFormPopup.renderFormLoading(true);
       cardsApi.editProfile({
         name: data.name,
-        job: data.description
+        about: data.description
       })
       .then((res)=> {
-        profileInfoElement.setUserInfo({
-          name: res.name,
-          job: res.about,
-          avatar: res.avatar
-        });
-      }).catch(err=>console.log(err))
-      .finally(()=> profileFormPopup.renderFormLoading(false));
-      
-      profileFormPopup.close();
+        profileInfoElement.setUserInfo(res);
+      }).then(()=>profileFormPopup.close())
+      .catch(err=>console.log(err))
+      .finally(()=> {
+        profileFormPopup.renderFormLoading(false)
+        
+      });
     },
   },
   PROFILE_FORM_POPUP
@@ -80,10 +83,14 @@ const cardFormPopup = new PopupWithForm(
       cardFormPopup.renderFormLoading(true);
       await cardsApi.addCard({name:data.place, link: data.link})
       .then(res=> cardSection.addItem(res))
+      .then(()=>cardFormPopup.close())
       .catch(err=>console.log(err))
-      .finally(()=>cardFormPopup.renderFormLoading(false));
+      .finally(()=>{
+        cardFormPopup.renderFormLoading(false)
+        
+      });
       
-      cardFormPopup.close();
+      
     },
   },
   CARD_FORM_POPUP
@@ -93,17 +100,17 @@ const avatarFormPopup = new PopupWithForm(
     handleFormSubmit: async (evt, data) => {
       evt.preventDefault();
       avatarFormPopup.renderFormLoading(true);
-      await cardsApi.changeProfilePicture(data.link)
-      .then((res)=>{
-        profileInfoElement.setUserInfo({
-          name:res.name,
-        job:res.about,
-        avatar: res.avatar
-        })
-      })
+      await cardsApi.changeProfilePicture(data["avatar-link"])
+      .then((res)=>
+        profileInfoElement.setUserInfo(res)
+      )
+      .then(()=>avatarFormPopup.close())
       .catch(err=>console.log(err))
-      .finally(()=> avatarFormPopup.renderFormLoading(false));
-      avatarFormPopup.close();
+      .finally(()=> {
+        avatarFormPopup.renderFormLoading(false)
+        
+      });
+      
     }
   },
   AVATAR_FORM_POPUP
@@ -121,42 +128,37 @@ function createCard (card){
         deletionConfirmPopup.open();
         deletionConfirmPopup.setCardElement(cardElement, cardId);
       },
-      handleLikeClick: async (cardId,likeList ,likeCounter, heartIcon) =>{
+      handleLikeClick: async (card) =>{
         
-        if (!likeList.some(item=>item._id===temp.id)){
-          const res = await cardsApi.likeCard(cardId)
+        
+        if (card.isLiked(temp._id)){
+          const res = await cardsApi.unLikeCard(card.getId())
           .then(res => {
-            likeCounter.textContent = res.likes.length;
-            heartIcon.classList.add("card__like-btn-filled");
-            likeList.push(temp.id);
+            card.toggleLike(res.likes, temp._id)
+            
           })
           .catch(err=>console.log(err));
         }
-        else {
-          const res = await cardsApi.unLikeCard(cardId)
-          .then(res=>{
-            likeCounter.textContent = res.likes.length;
-            heartIcon.classList.remove("card__like-btn-filled");
-            likeList.filter(item => item!=temp.id);            
-          })
+
+        else{
+          const res = await cardsApi.likeCard(card.getId())
+          .then(res => card.toggleLike(res.likes, temp._id))
           .catch(err=>console.log(err));
-          
         }
+        
       }
     },
     CARD_TEMPLATE_SECLECTOR
   );
   
   const cardElm =  cardObj.generateCard();
-  cardObj.hideTrashIcon(temp.id);
-  cardObj.toggleLikeButton(temp.id);
+  cardObj.hideTrashIcon(temp._id);
+  cardObj.renderLike(temp._id);
   return cardElm;
 }
 const cardSection = new Section(
   {
-    renderer: (card) => {
-      return createCard(card);
-    },
+    renderer: (card) => createCard(card),
   },
   ELEMENTS_SELECTOR
 );
@@ -182,7 +184,7 @@ deletionConfirmPopup.setEventListeners();
 avatarFormPopup.setEventListeners();
 profileFormEditBtn.addEventListener("click", () => {
   const temp = profileInfoElement.getUserInfo();
-  profileFormPopup.setInputValues({name: temp.name, description: temp.job});
+  profileFormPopup.setInputValues({name: temp.name, description: temp.about});
   profieFormValidator.resetValidation();
   profileFormPopup.open();
 });
@@ -191,18 +193,17 @@ profileFormEditBtn.addEventListener("click", () => {
 const cardsApi = new API(api_config);
 
 async function init(){
-  const [userData,cards ] = await Promise.all([
-    cardsApi.getUserInfo(),
-    cardsApi.getInitialCards()
-  ])
-  
-  profileInfoElement.setUserInfo({
-    name: userData.name,
-    job: userData.about,
-    avatar: userData.avatar,
-    id: userData._id
-  });
-  cardSection.renderItems(cards);
+  Promise.all([cardsApi.getUserInfo(), cardsApi.getInitialCards()])
+  .then(([userData, cards]) => {
+    profileInfoElement.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+      avatar: userData.avatar,
+      _id: userData._id
+    });
+    cardSection.renderItems(cards);
+  })
+  .catch(err=>console.log(err));
 }
 init();
 

@@ -30,8 +30,6 @@ const formProfileElement = document.querySelector(".form_type_edit");
 const profileFormEditBtn = document.querySelector(".profile-info__edit-button");
 
 const avatarFormElement = document.querySelector(".form_type_avatar");
-
-const MY_ID="339bdd3f46e607bf2c8e6140";
 export {
   validator_config,
   ELEMENTS_SELECTOR,

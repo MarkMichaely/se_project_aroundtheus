@@ -7,101 +7,84 @@ export default class API {
         }
     }
 
-    async getUserInfo(){
-        const res = await fetch(`${this.url}/users/me`, {
-            method: "GET",
-            headers: this.headers,
-        });
+    _checkResponse(res) {
         if (res.ok) {
             return res.json();
         }
-        return await Promise.reject(`Error: ${res.status}`);
+        else return Promise.reject(`Error ${res.status}`);
+    }
 
+    _request = (url, options)=> fetch(url, options)
+        .then(this._checkResponse)
+      
+    async getUserInfo(){
+        return this._request(`${this.url}/users/me`, {
+            method: "GET",
+            headers: this.headers,});
     }
     async getInitialCards(){
-    const res = await fetch(`${this.url}/cards`, {
+    
+    return this._request(`${this.url}/cards`, {
         method: "GET",
         headers: this.headers,
     });
-    if (res.ok) {
-        return res.json();
-    }
-    return await Promise.reject(`Error: ${res.status}`);
+    
 } 
-    async editProfile({name, job}){
-   const res =await fetch(`${this.url}/users/me`, {
-  method: "PATCH",
-  headers: this.headers,
-  body: JSON.stringify({
-    name: `${name}`,
-    about: `${job}`,
-  })
-});
-if (res.ok) {
-    return res.json();
-}
-return await Promise.reject(`Error: ${res.status}`);
+    async editProfile({name, about}){
+        return this._request(`${this.url}/users/me`, {
+            method: "PATCH",
+            headers: this.headers,
+            body: JSON.stringify({
+                name: `${name}`,
+                about: `${about}`,
+            })
+          });
+ 
 }
 
 async addCard({name, link}){
-    const res =await fetch(`${this.url}/cards`, {
+    return this._request(`${this.url}/cards`, {
         method: "POST",
         headers: this.headers,
         body: JSON.stringify({
           name: name,
           link: link
         })
-      }); 
-      if (res.ok) {
-        return res.json();
-    }
-    return await Promise.reject(`Error: ${res.status}`);
+      });
+  
 }
 async removeCard(cardId){
-    const res = await fetch(`${this.url}/cards/${cardId}`,
+    return this._request(`${this.url}/cards/${cardId}`,
     {
         method:"DELETE",
         headers: this.headers,
-    })
-    if (res.ok) {
-        return res.json();
-    }
-    return await Promise.reject(`Error: ${res.status}`);
+    });
+    
 }
 async likeCard(cardId){
-    const res = await fetch(`${this.url}/cards/likes/${cardId}`, {
+    return this._request(`${this.url}/cards/likes/${cardId}`, {
         method:"PUT",
         headers: this.headers,
 
-    })
-    if (res.ok) {
-        return res.json();
-    }
-    return await Promise.reject(`Error: ${res.status}`);
+    });
+    
 }
 async unLikeCard(cardId){
-    const res = await fetch(`${this.url}/cards/likes/${cardId}`, {
+    return this._request(`${this.url}/cards/likes/${cardId}`, {
         method:"DELETE",
         headers: this.headers,
 
-    })
-    if (res.ok) {
-        return res.json();
-    }
-    return await Promise.reject(`Error: ${res.status}`);
+    });
+
 }
 async changeProfilePicture(link){
-    const res = await fetch(`${this.url}/users/me/avatar`, {
+    return this._request(`${this.url}/users/me/avatar`, {
         method:"PATCH",
         headers: this.headers,
         body: JSON.stringify({
             avatar: link
           })
-    })
-
-    if (res.ok) {
-        return res.json();
-    }
-    return await Promise.reject(`Error: ${res.status}`);
+    });
+  
 }
 }

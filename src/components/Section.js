@@ -4,7 +4,7 @@ export default class Section{
         this._container=document.querySelector(selector);
     }
 
-    async renderItems(items){
+    renderItems(items){
         this._container.innerHTML = "";
         items.forEach(element => {
             this.addItem(element);
